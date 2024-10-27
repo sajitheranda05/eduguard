@@ -1,8 +1,9 @@
 import 'package:eduguard/src/common_widgets/Screens/appbar.dart';
 import 'package:eduguard/src/common_widgets/Screens/tabbar.dart';
-import 'package:eduguard/src/features/sos_system/screens/sos_state.dart';
+import 'package:eduguard/src/features/personalization/controllers/user_controller.dart';
 import 'package:eduguard/src/features/sos_system/screens/sos_tab_section.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SOSHomePage extends StatefulWidget {
   const SOSHomePage({super.key});
@@ -14,16 +15,17 @@ class SOSHomePage extends StatefulWidget {
 class _SOSHomePageState extends State<SOSHomePage> {
   @override
   Widget build(BuildContext context) {
+    final userController =Get.put(UserController());
     return DefaultTabController(
         length: 3,
         child: Scaffold(
 
-          appBar: const CustomAppBar(
+          appBar: CustomAppBar(
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Hello, Matteo Perera...', style: TextStyle(fontSize: 14.0, color:Colors.grey),),
-                Text('Emergency SOS System.', style: TextStyle(fontSize: 16.0),)
+                Text('Hello, ${userController.user.value.fullName} ...', style: TextStyle(fontSize: 14.0, color:Colors.grey),),
+                const Text('Emergency SOS System.', style: TextStyle(fontSize: 16.0),)
               ],
             ),
           ),

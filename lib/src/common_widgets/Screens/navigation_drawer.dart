@@ -1,30 +1,41 @@
+import 'package:eduguard/src/common_widgets/Screens/circular_image.dart';
+import 'package:eduguard/src/data/repositories/authentication_repository.dart';
+import 'package:eduguard/src/features/personalization/controllers/user_controller.dart';
+import 'package:eduguard/src/features/personalization/screens/user_profile.dart';
+import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomNavigationDrawer extends StatelessWidget {
   const CustomNavigationDrawer ({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final userController =UserController.instance;
     return Drawer(
       elevation: 5.0,
       child: ListView(
         padding: EdgeInsets.zero,
         children:[
-          const UserAccountsDrawerHeader(
-            accountName: Text('John doe'),
-            accountEmail: Text('john.doe@example.com'),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  "https://plus.unsplash.com/premium_vector-1682269287900-d96e9a6c188b?bg=FFFFFF&q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              ),
+          UserAccountsDrawerHeader(
+            accountName: Text(userController.user.value.fullName),
+            accountEmail: Text(userController.user.value.email),
+            currentAccountPicture: const CustomCircularImage(
+              image: AppImages.userImage,
+              width: 48,
+              height: 48,
             ),
             decoration: BoxDecoration(
               color: Colors.black,
             ),
+            onDetailsPressed: () {
+              Get.to(() => const UserProfile());
+            },
+            arrowColor: Colors.black,
           ),
 
           ListTile(
-            leading: const Icon(Icons.home_rounded),
+            leading: Icon(Icons.home_rounded, color: Colors.teal[900],),
             title: const Text('Emergency SOS System'),
             onTap: () {
               //Get.to(() => const SOSHomePage());
@@ -33,7 +44,7 @@ class CustomNavigationDrawer extends StatelessWidget {
 
           ListTile(
             leading: const Icon(Icons.school_rounded),
-            title: const Text('Eduaction'),
+            title: const Text('Education'),
             onTap: () {
               //Get.to(() => const TestPage());
             },
@@ -42,10 +53,10 @@ class CustomNavigationDrawer extends StatelessWidget {
           const Divider(),
 
           ListTile(
-            leading: const Icon(Icons.settings_rounded),
-            title: const Text('Settings'),
+            leading: const Icon(Icons.manage_accounts_rounded),
+            title: const Text('User Profile'),
             onTap: () {
-              //Get.to(() => const TestPage());
+              Get.to(() => const UserProfile());
             },
           ),
 
@@ -53,7 +64,7 @@ class CustomNavigationDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout_rounded),
             title: const Text('Logout'),
             onTap: () {
-              //Get.to(() => const TestPage());
+              AuthenticationRepository.instance.logout();
             },
           ),
 

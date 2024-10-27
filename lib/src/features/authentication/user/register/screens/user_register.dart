@@ -128,18 +128,6 @@ class UserSignUp extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.to(() => const EmailVerification());
-                            //signUpcontroller.signup();
-                          },
-                          child: const Text('Email Verification'),
-                        ),
-                      ),
-
-
                     ],
                   ))
             ],

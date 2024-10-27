@@ -76,6 +76,7 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/login_images/
     - assets/images/std_images/
+    - assets/images/user/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
