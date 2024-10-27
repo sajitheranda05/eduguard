@@ -11,9 +11,10 @@ class STDCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(
               color: Color(0x14000000), offset: Offset(0, 4), blurRadius: 8),
@@ -92,9 +93,12 @@ class STDCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 2),
             GestureDetector(
-              onTap: () => Get.to(() => STDView(std: std)),
+              onTap: () => Get.to(() => STDView(
+                    std: std,
+                    symptoms: const [],
+                  )),
               child: const Text(
                 'Learn More',
                 textAlign: TextAlign.left,

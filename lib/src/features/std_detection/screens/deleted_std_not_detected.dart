@@ -1,4 +1,4 @@
-import 'package:eduguard/src/utils/constants/image_strings.dart';
+/*import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -54,13 +54,13 @@ class STDNotDetected extends StatelessWidget {
                           ),
                           SizedBox(height: 10),
                           SizedBox(
-                            width: 300,
+                            width: 320,
                             child: Text(
-                              'You have not infected with any Sexually Transmitted Disease',
+                              'Based on the analysis, there are no signs of infection.\n Keep up the good work in maintaining your health.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   decoration: TextDecoration.none,
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Color(0xff9fa2a2),
                                   fontFamily: 'Poppins-Regular',
                                   fontWeight: FontWeight.normal),
@@ -71,37 +71,33 @@ class STDNotDetected extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 40),
-                      GestureDetector(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          width: 120,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff37be9d), width: 1),
-                            borderRadius: BorderRadius.circular(40),
+                      TextButton(
+                        onPressed: () => Get.back(),
+                        style: TextButton.styleFrom(
+                          side: const BorderSide(
+                              color: Color(0xff37be9d),
+                              width: 1), // Border color and width
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(40), // Border radius
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Back',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.none,
-                                      fontSize: 14,
-                                      color: Color(0xff37be9d),
-                                      fontFamily: 'Poppins-Medium',
-                                      fontWeight: FontWeight.normal),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
+                          padding: EdgeInsets.zero, // Remove internal padding
+                          minimumSize:
+                              const Size(120, 40), // Set the exact size
+                          alignment:
+                              Alignment.center, // Align content to the center
+                        ),
+                        child: const Text(
+                          'Back',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xff37be9d),
+                            fontFamily: 'Poppins-Medium',
+                            fontWeight: FontWeight.normal,
+                            decoration: TextDecoration.none,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -114,4 +110,4 @@ class STDNotDetected extends StatelessWidget {
       ),
     );
   }
-}
+}*/

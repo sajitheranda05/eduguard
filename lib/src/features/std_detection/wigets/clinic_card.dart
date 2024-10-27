@@ -1,15 +1,23 @@
-import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class ClinicCard extends StatelessWidget {
-  const ClinicCard({super.key});
+  final String clinicName;
+  final String clinicPhone;
+  final String clinicAddress;
+  final String clinicDescription;
+  const ClinicCard(
+      {super.key,
+      required this.clinicName,
+      required this.clinicPhone,
+      required this.clinicAddress,
+      required this.clinicDescription});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(
               color: Color(0x14000000), offset: Offset(0, 4), blurRadius: 8),
@@ -22,13 +30,22 @@ class ClinicCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              AppImages.clinic1,
+            Container(
               width: 80,
               height: 80,
+              decoration: BoxDecoration(
+                color: const Color(0xffDBF5F0), // Background color
+                borderRadius: BorderRadius.circular(
+                    10), // Circular shape (or adjust as needed)
+              ),
+              child: const Icon(
+                Icons.medical_services, // Your desired icon
+                color: Color(0xff37BE9E), // Icon color
+                size: 30, // Icon size
+              ),
             ),
             const SizedBox(width: 8),
-            const Expanded(
+            Expanded(
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -45,9 +62,9 @@ class ClinicCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Lorem ipsum dolor Clinic',
+                                clinicName,
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     decoration: TextDecoration.none,
                                     fontSize: 12,
                                     color: Color(0xff1e2425),
@@ -56,14 +73,14 @@ class ClinicCard extends StatelessWidget {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 2),
+                              const SizedBox(height: 2),
                               Row(
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'No 20/1, Lorem ipsum, dolor sit',
+                                      clinicAddress,
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           decoration: TextDecoration.none,
                                           fontSize: 12,
                                           color: Color(0xff9fa2a2),
@@ -75,14 +92,14 @@ class ClinicCard extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 2),
+                              const SizedBox(height: 2),
                               Row(
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      '0123456789 / 9875132640',
+                                      clinicPhone,
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           decoration: TextDecoration.none,
                                           fontSize: 10,
                                           color: Color(0xffbfc4c5),
@@ -99,11 +116,11 @@ class ClinicCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
-                      'Open everyday 5pm - 10pm',
+                      clinicDescription,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                           decoration: TextDecoration.none,
                           fontSize: 10,
                           color: Color(0xff9fa2a2),

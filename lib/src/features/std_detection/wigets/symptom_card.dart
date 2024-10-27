@@ -1,15 +1,17 @@
-import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class SymptomCard extends StatelessWidget {
-  const SymptomCard({super.key});
+  final String symptomImg; // The URL of the symptom image
+  final String symptomName; // The name of the symptom
+  const SymptomCard(
+      {super.key, required this.symptomImg, required this.symptomName});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(
               color: Color(0x14000000), offset: Offset(0, 4), blurRadius: 8),
@@ -17,65 +19,55 @@ class SymptomCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              AppImages.symptom1,
-              width: 80,
-              height: 80,
-            ),
-            const SizedBox(width: 8),
-            const Expanded(
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Lorem ipsum dolor symptom',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 12,
-                                color: Color(0xff1e2425),
-                                fontFamily: 'Poppins-Medium',
-                                fontWeight: FontWeight.normal),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 2),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Can be seen near lorem ipsum and Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit. ',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontSize: 12,
-                                color: Color(0xff9fa2a2),
-                                fontFamily: 'Poppins-Regular',
-                                fontWeight: FontWeight.normal),
-                            maxLines: 5,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+            ClipRRect(
+              borderRadius:
+                  BorderRadius.circular(10.0), // Rounds the corners by 10px
+              child: AspectRatio(
+                aspectRatio: 3 / 2, // Set the aspect ratio to 3:2
+                child: Image.network(
+                  symptomImg,
+                  fit: BoxFit.cover,
                 ),
               ),
+            ),
+            const SizedBox(height: 5),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              symptomName,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12,
+                                  color: Color(0xff1e2425),
+                                  fontFamily: 'Poppins-Regular',
+                                  fontWeight: FontWeight.normal),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

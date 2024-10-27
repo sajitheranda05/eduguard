@@ -1,8 +1,10 @@
-import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class QualificationCard extends StatelessWidget {
-  const QualificationCard({super.key});
+  final String degree;
+  final String campusName;
+  const QualificationCard(
+      {super.key, required this.degree, required this.campusName});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +24,22 @@ class QualificationCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              AppImages.medscl2,
+            Container(
               width: 55,
               height: 55,
+              decoration: BoxDecoration(
+                color: const Color(0xffDBF5F0), // Background color
+                borderRadius:
+                    BorderRadius.circular(27.5), // Circular shape (half of 55)
+              ),
+              child: const Icon(
+                Icons.school_rounded, // Your desired icon
+                color: Color(0xff37BE9E), // Icon color (#37BE9E)
+                size: 24, // Icon size (adjust to fit nicely)
+              ),
             ),
             const SizedBox(width: 8),
-            const Expanded(
+            Expanded(
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -37,9 +48,9 @@ class QualificationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lorem ipsum dolor Campus',
+                      campusName,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                           decoration: TextDecoration.none,
                           fontSize: 12,
                           color: Color(0xff1e2425),
@@ -48,14 +59,14 @@ class QualificationCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     Row(
                       children: [
                         Expanded(
                           child: Text(
-                            '(MBBS) lorem ipsum, specialized in Lorem and Lorem ipsum',
+                            degree,
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 decoration: TextDecoration.none,
                                 fontSize: 12,
                                 color: Color(0xff9fa2a2),

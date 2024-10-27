@@ -2,7 +2,6 @@ import 'package:eduguard/src/common_widgets/Screens/appbar.dart';
 import 'package:eduguard/src/features/std_detection/models/specialist_model.dart';
 import 'package:eduguard/src/features/std_detection/wigets/clinic_card.dart';
 import 'package:eduguard/src/features/std_detection/wigets/qualification_card.dart';
-import 'package:eduguard/src/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class SpecialistView extends StatelessWidget {
@@ -13,10 +12,10 @@ class SpecialistView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: const CustomAppBar(
+        appBar: CustomAppBar(
           title: Text(
-            'Dr. Loremi Dolor',
-            style: TextStyle(fontSize: 18.0),
+            specialist.specialistName,
+            style: const TextStyle(fontSize: 18.0),
           ),
           showBackArrow: true, // Show the back arrow
         ),
@@ -37,193 +36,101 @@ class SpecialistView extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.asset(
-                                AppImages.specialist1,
-                                width: 110,
-                                height: 110,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(width: 10),
-                              const Expanded(
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'Contact Information',
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  fontSize: 14,
-                                                  color: Color(0xff1e2425),
-                                                  fontFamily: 'Poppins-Medium',
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 8),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.phone_in_talk,
-                                                  color: Color(0xFF37BE9E),
-                                                  size: 20.0,
-                                                ),
-                                                SizedBox(width: 8),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    width: double.infinity,
-                                                    child: Text(
-                                                      '0112233445',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none,
-                                                          fontSize: 12,
-                                                          color:
-                                                              Color(0xff9fa2a2),
-                                                          fontFamily:
-                                                              'Poppins-Regular',
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 8),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.mail,
-                                                  color: Color(0xFF37BE9E),
-                                                  size: 18.0,
-                                                ),
-                                                SizedBox(width: 8),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    width: double.infinity,
-                                                    child: Text(
-                                                      'loremipsumi@gmail.com',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none,
-                                                          fontSize: 12,
-                                                          color:
-                                                              Color(0xff9fa2a2),
-                                                          fontFamily:
-                                                              'Poppins-Regular',
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 8),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.location_on,
-                                                  color: Color(0xFF37BE9E),
-                                                  size: 20.0,
-                                                ),
-                                                SizedBox(width: 8),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    width: double.infinity,
-                                                    child: Text(
-                                                      'lorem ipsum city',
-                                                      textAlign: TextAlign.left,
-                                                      style: TextStyle(
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none,
-                                                          fontSize: 12,
-                                                          color:
-                                                              Color(0xff9fa2a2),
-                                                          fontFamily:
-                                                              'Poppins-Regular',
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.network(
+                                  specialist.specialistImg,
+                                  width: 250,
+                                  height: 250,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
+                              const SizedBox(height: 20),
+                              Wrap(
+                                spacing:
+                                    10, // Space between the labels horizontally
+                                runSpacing:
+                                    10, // Space between the labels vertically when wrapping
+                                alignment: WrapAlignment
+                                    .center, // Aligns the content to the center
+                                children: [
+                                  // Location label
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5, horizontal: 10),
+                                    decoration: BoxDecoration(
+                                      color: const Color(
+                                          0xFFC7DBDE), // Updated background color
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text(
+                                      specialist.specialistCity,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Color(
+                                            0xFF0C6170), // Updated text color
+                                        fontFamily: 'Poppins-Regular',
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ),
+                                  // Specialization label
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5, horizontal: 10),
+                                    decoration: BoxDecoration(
+                                      color: const Color(
+                                          0xFFC7DBDE), // Updated background color
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text(
+                                      specialist.specialization,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Color(
+                                            0xFF0C6170), // Updated text color
+                                        fontFamily: 'Poppins-Regular',
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ),
+                                  // Years of experience label
+                                  Visibility(
+                                    visible: specialist.years
+                                        .isNotEmpty, // Only visible if experience is not empty
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 10),
+                                      decoration: BoxDecoration(
+                                        color: const Color(
+                                            0xFFC7DBDE), // Updated background color
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Text(
+                                        '${specialist.years} experience', // Display experience value
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          color: Color(
+                                              0xFF0C6170), // Updated text color
+                                          fontFamily: 'Poppins-Regular',
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
                             ],
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    const Row(
+                    Row(
                       children: [
                         Expanded(
                           child: Column(
@@ -231,7 +138,7 @@ class SpecialistView extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 321,
                                 child: Text(
                                   'About',
@@ -246,14 +153,14 @@ class SpecialistView extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Row(
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'Lorem ipsum dolor sit amet consectetur. Laoreet sed sit feugiat ac tincidunt vitae. At tellus lectus donec et nulla risus fames quam faucibus. Habitant aliquam arcu nec in lectus risus. Vestibulum venenatis amet sed vel lobortis eu sed at. Elementum magnis ullamcorper magna id natoque quis. Diam odio elit vel pellentesque nec volutpat dui. Non sit est et vestibulum et. ',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
+                                      specialist.specialistAbout,
+                                      textAlign: TextAlign.start,
+                                      style: const TextStyle(
                                           decoration: TextDecoration.none,
                                           fontSize: 12,
                                           color: Color(0xff9fa2a2),
@@ -295,14 +202,25 @@ class SpecialistView extends StatelessWidget {
                               ),
                               const SizedBox(height: 5),
                               ListView.builder(
-                                itemCount: 3,
+                                itemCount:
+                                    specialist.specialistClinic?.length ?? 0,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (_, index) => const Padding(
-                                  padding: EdgeInsets.only(
-                                      bottom: 10.0), // Space between items
-                                  child: ClinicCard(), // List item widget
-                                ),
+                                itemBuilder: (_, index) {
+                                  final clinic =
+                                      specialist.specialistClinic?[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 10.0), // Space between items
+                                    child: ClinicCard(
+                                      clinicName: clinic!.clinicName,
+                                      clinicPhone: clinic.clinicPhone,
+                                      clinicAddress: clinic.clinicAddress,
+                                      clinicDescription:
+                                          clinic.clinicDescription,
+                                    ), // A custom widget or ListTile to display clinic information
+                                  );
+                                },
                               ),
                             ],
                           ),
@@ -334,15 +252,18 @@ class SpecialistView extends StatelessWidget {
                               ),
                               const SizedBox(height: 5),
                               ListView.builder(
-                                itemCount: 2,
+                                itemCount: specialist
+                                        .specialistQualifications?.length ??
+                                    0,
                                 shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (_, index) => const Padding(
-                                  padding: EdgeInsets.only(
-                                      bottom: 10.0), // Space between items
-                                  child:
-                                      QualificationCard(), // List item widget
-                                ),
+                                itemBuilder: (_, index) {
+                                  final qualification = specialist
+                                      .specialistQualifications![index];
+                                  return QualificationCard(
+                                    campusName: qualification.campusName,
+                                    degree: qualification.degree,
+                                  );
+                                },
                               ),
                             ],
                           ),

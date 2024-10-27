@@ -23,5 +23,14 @@ class SpecialistRepository extends GetxController {
     }
   }
 
-  ///Upload dummy data to the cloud firebase
+  /// Add a new specialist to the Firestore database
+  Future<void> addSpecialist(SpecialistModel specialist) async {
+    try {
+      await _db.collection('Specialists').add(specialist.toJson());
+    } on FirebaseException catch (e) {
+      throw ('Firebase Exception : $e');
+    } catch (e) {
+      throw 'Something went wrong, Please try again';
+    }
+  }
 }

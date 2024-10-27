@@ -8,8 +8,7 @@ class SpecialistModel {
   String specialistName;
   String specialization;
   String specialistAbout;
-  String specialistMobile;
-  String specialistEmail;
+  String years;
   String specialistCity;
   bool? isPopular;
   List<ClinicModel>? specialistClinic;
@@ -21,8 +20,7 @@ class SpecialistModel {
     required this.specialistName,
     required this.specialization,
     required this.specialistAbout,
-    required this.specialistMobile,
-    required this.specialistEmail,
+    required this.years,
     required this.specialistCity,
     required this.isPopular,
     required this.specialistClinic,
@@ -36,8 +34,7 @@ class SpecialistModel {
         specialistName: '',
         specialization: '',
         specialistAbout: '',
-        specialistMobile: '',
-        specialistEmail: '',
+        years: '',
         specialistCity: '',
         isPopular: false,
         specialistClinic: [],
@@ -51,8 +48,7 @@ class SpecialistModel {
       'Specialist_name': specialistName,
       'Specialization': specialization,
       'Specialist_about': specialistAbout,
-      'Specialist_mobile': specialistMobile,
-      'Specialist_email': specialistEmail,
+      'Experience': years,
       'Specialist_city': specialistCity,
       'isPopular': isPopular,
       'Specialist_clinics': specialistClinic != null
@@ -75,8 +71,7 @@ class SpecialistModel {
       specialistName: data['Specialist_name'],
       specialization: data['Specialization'],
       specialistAbout: data['Specialist_about'],
-      specialistMobile: data['Specialist_mobile'],
-      specialistEmail: data['Specialist_email'],
+      years: data['Experience'],
       specialistCity: data['Specialist_city'],
       isPopular: data['isPopular'] ?? false,
       specialistClinic: (data['Specialist_clinics'] as List<dynamic>)

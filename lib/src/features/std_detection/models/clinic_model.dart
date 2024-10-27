@@ -1,24 +1,21 @@
 class ClinicModel {
-  String? clinicId;
-  String? clinicLogo;
-  String? clinicName;
-  String? clinicAddress;
-  String? clinicPhone;
-  String? clinicDescription;
+  String clinicId;
+  String clinicName;
+  String clinicAddress;
+  String clinicPhone;
+  String clinicDescription;
 
   ClinicModel(
-      {this.clinicId,
-      this.clinicLogo,
-      this.clinicName,
-      this.clinicAddress,
-      this.clinicPhone,
-      this.clinicDescription});
+      {required this.clinicId,
+      required this.clinicName,
+      required this.clinicAddress,
+      required this.clinicPhone,
+      required this.clinicDescription});
 
   ///Convert model to Json structure so that you can store data in Firebase
   toJson() {
     return {
       'Clinic_ID': clinicId,
-      'Clinic_logo': clinicLogo,
       'Clinic_name': clinicName,
       'Clinic_address': clinicAddress,
       'Clinic_phone': clinicPhone,
@@ -30,11 +27,10 @@ class ClinicModel {
   factory ClinicModel.fromJson(Map<String, dynamic> document) {
     final data = document;
 
-    if (data.isEmpty) return ClinicModel();
+    //if (data.isEmpty) return ClinicModel();
 
     return ClinicModel(
       clinicId: data.containsKey('Clinic_ID') ? data['Clinic_ID'] : '',
-      clinicLogo: data.containsKey('Clinic_logo') ? data['Clinic_logo'] : '',
       clinicName: data.containsKey('Clinic_name') ? data['Clinic_name'] : '',
       clinicAddress:
           data.containsKey('Clinic_address') ? data['Clinic_address'] : '',

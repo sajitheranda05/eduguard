@@ -235,60 +235,41 @@ class STDHomePage extends StatelessWidget {
                                                       ],
                                                     ),
                                                     const SizedBox(height: 15),
-                                                    GestureDetector(
-                                                      onTap: () => Get.to(
+                                                    ElevatedButton(
+                                                      onPressed: () => Get.to(
                                                           const STDInfo()),
-                                                      child: Container(
-                                                        width: 140,
-                                                        height: 40,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: const Color(
-                                                              0xff0c6170),
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            const Color(
+                                                                0xff0c6170), // Background color
+                                                        shape:
+                                                            RoundedRectangleBorder(
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(40),
+                                                              BorderRadius.circular(
+                                                                  40), // Rounded corners
                                                         ),
-                                                        child: const Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  10),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Text(
-                                                                'Detect Now',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .left,
-                                                                style: TextStyle(
-                                                                    decoration:
-                                                                        TextDecoration
-                                                                            .none,
-                                                                    fontSize:
-                                                                        14,
-                                                                    color: Color(
-                                                                        0xffffffff),
-                                                                    fontFamily:
-                                                                        'Poppins-Medium',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal),
-                                                                maxLines: 1,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                              ),
-                                                            ],
-                                                          ),
+                                                        minimumSize: const Size(
+                                                            140,
+                                                            40), // Button size
+                                                        padding: const EdgeInsets
+                                                            .all(
+                                                            10), // Padding inside the button
+                                                      ),
+                                                      child: const Text(
+                                                        'Detect Now',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              'Poppins-Medium',
+                                                          fontWeight:
+                                                              FontWeight.normal,
                                                         ),
                                                       ),
-                                                    ),
+                                                    )
                                                   ],
                                                 ),
                                               ),

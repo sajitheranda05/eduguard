@@ -13,7 +13,7 @@ class SpecialistCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: const [
           BoxShadow(
               color: Color(0x14000000), offset: Offset(0, 4), blurRadius: 8),
@@ -26,11 +26,15 @@ class SpecialistCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              specialist.specialistImg,
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius:
+                  BorderRadius.circular(10), // Adjust the radius as needed
+              child: Image.network(
+                specialist.specialistImg,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(width: 10),
             Expanded(
@@ -58,7 +62,7 @@ class SpecialistCard extends StatelessWidget {
                                     color: Color(0xff1e2425),
                                     fontFamily: 'Poppins-Medium',
                                     fontWeight: FontWeight.normal),
-                                maxLines: 1,
+                                maxLines: 5,
                                 overflow: TextOverflow.ellipsis,
                               ),
                               const SizedBox(height: 2),
@@ -111,7 +115,7 @@ class SpecialistCard extends StatelessWidget {
                                                   fontFamily: 'Poppins-Regular',
                                                   fontWeight:
                                                       FontWeight.normal),
-                                              maxLines: 1,
+                                              maxLines: 5,
                                               overflow: TextOverflow.ellipsis,
                                             ),
                                           ),
@@ -126,7 +130,7 @@ class SpecialistCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 12),
                     GestureDetector(
                       onTap: () =>
                           Get.to(() => SpecialistView(specialist: specialist)),
@@ -139,7 +143,7 @@ class SpecialistCard extends StatelessWidget {
                             color: Color(0xff37be9d),
                             fontFamily: 'Poppins-Regular',
                             fontWeight: FontWeight.normal),
-                        maxLines: 1,
+                        maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),

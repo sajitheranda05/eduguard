@@ -1,12 +1,15 @@
 import 'package:eduguard/src/common_widgets/Screens/appbar.dart';
 import 'package:eduguard/src/features/std_detection/models/std_model.dart';
+import 'package:eduguard/src/features/std_detection/models/symptom_model.dart';
 import 'package:eduguard/src/features/std_detection/wigets/symptom_card.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class STDView extends StatelessWidget {
-  const STDView({super.key, required this.std});
+  const STDView({super.key, required this.std, required this.symptoms});
 
   final STDModel std;
+  final List<SymptomModel> symptoms;
 
   @override
   Widget build(BuildContext context) {
@@ -47,30 +50,34 @@ class STDView extends StatelessWidget {
                               children: [
                                 AspectRatio(
                                   aspectRatio: 2 / 1, // 2:1 ratio
-                                  child: Image.network(
-                                    std.stdImg,
-                                    fit: BoxFit.cover,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        10), // Adjust the radius as needed
+                                    child: Image.network(
+                                      std.stdImg,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 5),
-                                // const Row(
-                                // children: [
-                                //  Expanded(
-                                //  child: Text(
-                                //    'Microscopic view of Lorem Ipsum',
-                                //   textAlign: TextAlign.center,
-                                //   style: TextStyle(
-                                //      decoration: TextDecoration.none,
-                                //      fontSize: 10,
-                                //     color: Color(0xff9fa2a2),
-                                //     fontFamily: 'Poppins-Regular',
-                                //     fontWeight: FontWeight.normal),
-                                // maxLines: 2,
-                                //  overflow: TextOverflow.ellipsis,
-                                // ),
-                                // ),
-                                //  ],
-                                //  ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        std.caption,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            decoration: TextDecoration.none,
+                                            fontSize: 10,
+                                            color: Color(0xff9fa2a2),
+                                            fontFamily: 'Poppins-Regular',
+                                            fontWeight: FontWeight.normal),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -148,7 +155,7 @@ class STDView extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              SizedBox(
+                              /*SizedBox(
                                 // width: 321,
                                 child: Text(
                                   std.stdSymptoms,
@@ -163,18 +170,35 @@ class STDView extends StatelessWidget {
                                   maxLines: 100,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
+                              ),*/
 
-                              ///  ListView.builder(
-                              ///  itemCount: std.stdSymptoms?.length ?? 0,
-                              ///  shrinkWrap: true,
-                              ///  physics: const NeverScrollableScrollPhysics(),
-                              ///  itemBuilder: (_, index) => const Padding(
-                              ///   padding: EdgeInsets.only(
-                              ///       bottom: 10.0), // Space between items
-                              ///   child: SymptomCard(), // List item widget
-                              ///  ),
-                              ///),
+                              // Update the GridView to display symptoms
+                              GridView.builder(
+                                itemCount: std.stdSymptoms?.length ??
+                                    0, // Using std.stdSymptoms to determine the count
+                                shrinkWrap:
+                                    true, // Adjusts the grid to fit its content
+                                physics:
+                                    const NeverScrollableScrollPhysics(), // Disables grid scrolling
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisExtent:
+                                      185, // Fixed height of each grid item
+                                  crossAxisSpacing: 10, // Space between columns
+                                  mainAxisSpacing: 10, // Space between rows
+                                ),
+                                itemBuilder: (_, index) {
+                                  final symptom = std.stdSymptoms![
+                                      index]; // Accessing the symptom from std.stdSymptoms
+                                  return SymptomCard(
+                                    symptomImg: symptom
+                                        .symptomImg, // Use the property for the image URL
+                                    symptomName: symptom
+                                        .symptomName, // Use the property for the name
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -272,65 +296,36 @@ class STDView extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    /*Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          'Learn more about this STD',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              decoration: TextDecoration.none,
-                                              fontSize: 12,
-                                              color: Color(0xff1e2425),
-                                              fontFamily: 'Poppins-Regular',
-                                              fontWeight: FontWeight.normal),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          'https://en.wikipedia.org/wiki/Syphilis',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              decoration: TextDecoration.none,
-                                              fontSize: 12,
-                                              color: Color(0xff9fa2a3),
-                                              fontFamily: 'Poppins-Regular',
-                                              fontWeight: FontWeight.normal),
-                                          maxLines: 4,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                    Center(
+                      child: TextButton(
+                        onPressed: () => launchUrl(Uri.parse(std.externalURL)),
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              Colors.transparent, // Transparent background
+                          foregroundColor:
+                              const Color(0xff37be9d), // Text color
+                          side: const BorderSide(
+                            color: Color(0xff37be9d), // Border color
+                            width: 1,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(40), // Rounded corners
+                          ),
+                          minimumSize: const Size(200, 40), // Button size
+                        ),
+                        child: const Text(
+                          'Read more about this STD',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'Poppins-Medium',
+                            fontWeight: FontWeight.normal,
+                            decoration: TextDecoration.none,
                           ),
                         ),
-                      ],
-                    ),*/
+                      ),
+                    )
                   ],
                 ),
               ),
