@@ -9,13 +9,9 @@ class BlogRepository extends GetxService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   // Save blog data to Firestore
-  Future<void> saveBlogRecord(
-      String customID, Map<String, dynamic> blogData) async {
+  Future<void> saveBlogRecord(Map<String, dynamic> blogData) async {
     try {
-      await _db
-          .collection('Blogs')
-          .doc(customID)
-          .set(blogData); // Auto-generates an ID
+      await _db.collection('Blogs').add(blogData); // Auto-generates an ID
     } on FirebaseException catch (e) {
       throw ('Firebase Exception: $e');
     } catch (e) {

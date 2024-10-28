@@ -42,7 +42,7 @@ class AddBlogController extends GetxController {
   final TextEditingController CatogaryController = TextEditingController();
 
   // Method to add a new blog using BlogModel
-  Future<void> addBlog(String blogID) async {
+  Future<void> addBlog() async {
     if (!blogFormKey.currentState!.validate()) {
       return; // If form is not valid, return early
     }
@@ -52,7 +52,7 @@ class AddBlogController extends GetxController {
 
       // Create a BlogModel instance
       final blog = BlogModel(
-        ID: blogID, // Manually Passed ID
+        ID: '', // Manually Passed ID
         BlogName: blogName.value,
         Blog: blogContent.value,
         BloggerName: bloggerName.value,
@@ -61,7 +61,7 @@ class AddBlogController extends GetxController {
       );
 
       // Save the blog
-      await blogRepository.saveBlogRecord(blogID, blog.toJson());
+      await blogRepository.saveBlogRecord(blog.toJson());
       AppSnackBars.successSnackBar(
           title: 'Success', message: 'Blog added successfully!');
 
